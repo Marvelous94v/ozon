@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/cart */ \"./src/modules/cart.js\");\n/* harmony import */ var _modules_second__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/second */ \"./src/modules/second.js\");\n\r\n\r\n\r\n(0,_modules_cart__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n;(0,_modules_second__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n\n//# sourceURL=webpack://my-homework/./src/index.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/cart */ \"./src/modules/cart.js\");\n/* harmony import */ var _modules_load__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/load */ \"./src/modules/load.js\");\n/* harmony import */ var _modules_search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/search */ \"./src/modules/search.js\");\n/* harmony import */ var _modules_catalog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/catalog */ \"./src/modules/catalog.js\");\n\r\n\r\n\r\n\r\n\r\n(0,_modules_cart__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n;(0,_modules_load__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\r\n;(0,_modules_catalog__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\r\n;(0,_modules_search__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n\n//# sourceURL=webpack://my-homework/./src/index.js?\n}");
 
 /***/ }),
 
@@ -30,33 +30,63 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ }),
 
+/***/ "./src/modules/catalog.js":
+/*!********************************!*\
+  !*** ./src/modules/catalog.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getData */ \"./src/modules/getData.js\");\n/* harmony import */ var _renderGoods__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderGoods */ \"./src/modules/renderGoods.js\");\n/* harmony import */ var _filters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filters */ \"./src/modules/filters.js\");\n\r\n\r\n\r\n\r\nconst scriptCatalog = () => {\r\n\r\n    const btnCatalog = document.querySelector('.catalog-button')\r\n    const catalogModal = document.querySelector('.catalog')\r\n    const catalogModalItems = document.querySelectorAll('.catalog li')\r\n\r\n    let isOpen = false;\r\n\r\n\r\n\r\n    btnCatalog.addEventListener('click', () => {\r\n        isOpen = !isOpen\r\n        isOpen ? catalogModal.style.display = 'block' : catalogModal.style.display = 'none'\r\n    })\r\n\r\n\r\n\r\n    catalogModalItems.forEach(item => {\r\n\r\n        item.addEventListener('click', () => {\r\n            const text = item.textContent\r\n            console.log(text);\r\n\r\n            (0,_getData__WEBPACK_IMPORTED_MODULE_0__[\"default\"])().then((data) => {\r\n                (0,_renderGoods__WEBPACK_IMPORTED_MODULE_1__[\"default\"])((0,_filters__WEBPACK_IMPORTED_MODULE_2__.scriptCategoryFilter)(data, text));\r\n            })\r\n        })\r\n\r\n    })\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scriptCatalog); \n\n//# sourceURL=webpack://my-homework/./src/modules/catalog.js?\n}");
+
+/***/ }),
+
+/***/ "./src/modules/filters.js":
+/*!********************************!*\
+  !*** ./src/modules/filters.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   scriptCategoryFilter: () => (/* binding */ scriptCategoryFilter),\n/* harmony export */   scriptSearchFilter: () => (/* binding */ scriptSearchFilter)\n/* harmony export */ });\nconst scriptSearchFilter = (goods, value) => {\r\n\r\n    return goods.filter((item) => {\r\n        return item.title.toLowerCase().includes(value.toLowerCase())\r\n    });\r\n}\r\n\r\nconst scriptCategoryFilter = (goods, value) => {\r\n\r\n    return goods.filter((item) => {\r\n        return item.category === value\r\n    });\r\n}\r\n\r\n\n\n//# sourceURL=webpack://my-homework/./src/modules/filters.js?\n}");
+
+/***/ }),
+
 /***/ "./src/modules/getData.js":
 /*!********************************!*\
   !*** ./src/modules/getData.js ***!
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// Получение данных\r\nconst getData = (data) => {\r\n\r\n    return fetch('https://test-ozon-148a7-default-rtdb.firebaseio.com/goods.json')\r\n        .then((response) => {\r\n            return response.json();\r\n        })\r\n\r\n    /*         .then((response) => response.json())\r\n            .then((json) => console.log(json)); */\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getData);\n\n//# sourceURL=webpack://my-homework/./src/modules/getData.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// Получение данных\r\nconst getData = (str) => {\r\n\r\n    return fetch(`\r\n        https://test-ozon-148a7-default-rtdb.firebaseio.com/goods.json\r\n        `)\r\n        .then((response) => {\r\n            return response.json();\r\n        })\r\n\r\n    /*         .then((response) => response.json())\r\n            .then((json) => console.log(json)); \r\n            \r\n            \r\n            `https://test-ozon-148a7-default-rtdb.firebaseio.com/goods.json?${str ? `search=${str}` : ''}`)\r\n            \r\n            */\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getData);\n\n//# sourceURL=webpack://my-homework/./src/modules/getData.js?\n}");
 
 /***/ }),
 
-/***/ "./src/modules/postData.js":
-/*!*********************************!*\
-  !*** ./src/modules/postData.js ***!
-  \*********************************/
+/***/ "./src/modules/load.js":
+/*!*****************************!*\
+  !*** ./src/modules/load.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// Получение данных\r\nconst postData = (data) => {\r\n\r\n    /*  return fetch('http://localhost:3000/goods/73aa', {\r\n         method: 'DELETE'\r\n     })\r\n         .then(res => res.json()) */\r\n\r\n    return fetch('http://localhost:3000/goods', {\r\n        method: 'POST',\r\n        body: JSON.stringify({\r\n            title: \"Ведьмак 3\",\r\n            price: 3500,\r\n            sale: true,\r\n            img: \"https://cdn1.ozone.ru/multimedia/c400/1024822131.jpg\",\r\n            /*                 hoverImg: \"https://cdn1.ozone.ru/multimedia/c400/1024822128.jpg\", */\r\n            category: \"Игровая приставка\"\r\n        }),\r\n        headers: {\r\n            'Content-type': 'application/json; charset=UTF-8',\r\n        }\r\n    }).then(res => res.json())\r\n\r\n\r\n\r\n    /*         .then((response) => response.json())\r\n            .then((json) => console.log(json)); */\r\n\r\n\r\n\r\n    /* fetch('https://jsonplaceholder.typicode.com/users/1')\r\n        .then((response) => {\r\n            return response.json();\r\n        }) */\r\n\r\n\r\n    /*         .then((response) => response.json())\r\n            .then((json) => console.log(json)); */\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (postData);\n\n//# sourceURL=webpack://my-homework/./src/modules/postData.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getData */ \"./src/modules/getData.js\");\n/* harmony import */ var _renderGoods__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderGoods */ \"./src/modules/renderGoods.js\");\n/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search */ \"./src/modules/search.js\");\n\r\n\r\n\r\n\r\nconst scriptLoad = () => {\r\n\r\n    (0,_search__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\r\n\r\n    (0,_getData__WEBPACK_IMPORTED_MODULE_0__[\"default\"])().then((data) => {\r\n        (0,_renderGoods__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(data);\r\n    })\r\n\r\n    /*  \r\n        import postData from \"./postData\";\r\n\r\n        const cartBtn = document.getElementById('cart')\r\n\r\n        cartBtn.addEventListener('click', () => {\r\n    \r\n            postData().then((data) => {\r\n                console.log(data);\r\n            })\r\n    \r\n            getData().then((data) => {\r\n                console.log(data);\r\n            })\r\n        }) */\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scriptLoad);\n\n//# sourceURL=webpack://my-homework/./src/modules/load.js?\n}");
 
 /***/ }),
 
-/***/ "./src/modules/second.js":
+/***/ "./src/modules/renderGoods.js":
+/*!************************************!*\
+  !*** ./src/modules/renderGoods.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst scriptRenderGoogs = (data) => {\r\n\r\n    const goodsWrapper = document.querySelector('.goods')\r\n\r\n    goodsWrapper.innerHTML = ''\r\n\r\n    data.forEach(element => {\r\n        // console.log(element);\r\n\r\n        goodsWrapper.insertAdjacentHTML('beforeend', `\r\n            <div class=\"col-12 col-md-6 col-lg-4 col-xl-3\">\r\n                <div class=\"card\">\r\n                    ${element.sale ? '<div class=\"card-sale\">🔥Hot Sale🔥</div>' : ''}\r\n                    <div class=\"card-img-wrapper\">\r\n                        <span class=\"card-img-top\"\r\n                            style=\"background-image: url('${element.img}')\"></span>\r\n                    </div>\r\n                    <div class=\"card-body justify-content-between\">\r\n                        <div class=\"card-price\">${element.price} ₽</div>\r\n                        <h5 class=\"card-title\">${element.title}</h5>\r\n                        <button class=\"btn btn-primary\">В корзину</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            `)\r\n\r\n    });\r\n\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scriptRenderGoogs);\n\n//# sourceURL=webpack://my-homework/./src/modules/renderGoods.js?\n}");
+
+/***/ }),
+
+/***/ "./src/modules/search.js":
 /*!*******************************!*\
-  !*** ./src/modules/second.js ***!
+  !*** ./src/modules/search.js ***!
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getData */ \"./src/modules/getData.js\");\n/* harmony import */ var _postData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./postData */ \"./src/modules/postData.js\");\n\r\n\r\n\r\nconst second = () => {\r\n\r\n    const cartBtn = document.getElementById('cart')\r\n\r\n    ;(0,_getData__WEBPACK_IMPORTED_MODULE_0__[\"default\"])().then((data) => {\r\n        console.log(data);\r\n    })\r\n\r\n    /*     cartBtn.addEventListener('click', () => {\r\n    \r\n            postData().then((data) => {\r\n                console.log(data);\r\n            })\r\n    \r\n            getData().then((data) => {\r\n                console.log(data);\r\n            })\r\n        }) */\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (second);\n\n//# sourceURL=webpack://my-homework/./src/modules/second.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getData */ \"./src/modules/getData.js\");\n/* harmony import */ var _renderGoods__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderGoods */ \"./src/modules/renderGoods.js\");\n/* harmony import */ var _filters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filters */ \"./src/modules/filters.js\");\n\r\n\r\n\r\n\r\nconst scriptSearch = () => {\r\n    const searchInput = document.querySelector('.search-wrapper_input')\r\n\r\n    searchInput.addEventListener('input', (event) => {\r\n        const value = event.target.value\r\n        console.log(value);\r\n\r\n        (0,_getData__WEBPACK_IMPORTED_MODULE_0__[\"default\"])().then((data) => {\r\n            (0,_renderGoods__WEBPACK_IMPORTED_MODULE_1__[\"default\"])((0,_filters__WEBPACK_IMPORTED_MODULE_2__.scriptSearchFilter)(data, value));\r\n        })\r\n\r\n    })\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scriptSearch);\n\n//# sourceURL=webpack://my-homework/./src/modules/search.js?\n}");
 
 /***/ })
 

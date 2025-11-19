@@ -1,5 +1,9 @@
 import scriptModalCard from "./modules/cart";
-import second from "./modules/second";
+import scriptLoad from "./modules/load";
+import scriptSearch from "./modules/search";
+import scriptCatalog from "./modules/catalog";
 
 scriptModalCard()
-second()
+scriptLoad()
+scriptCatalog()
+scriptSearch()
