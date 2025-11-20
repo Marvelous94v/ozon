@@ -1,18 +1,20 @@
-const scriptRenderGoogs = (data) => {
+const scriptRenderCart = (data) => {
 
-    if (data.length !== 0) {
+    const cartWrapper = document.querySelector('.cart-wrapper')
+    cartWrapper.innerHTML = ''
 
-        const goodsWrapper = document.querySelector('.goods')
-
-        localStorage.setItem('goods', JSON.stringify(data))
-
-        goodsWrapper.innerHTML = ''
+    if (data.length === 0) {
+        cartWrapper.insertAdjacentHTML('beforeend', `
+            <div id="cart-empty">
+                Ваша корзина пока пуста
+            </div>
+        `)
+    } else {
 
         data.forEach(element => {
             // console.log(element);
 
-            goodsWrapper.insertAdjacentHTML('beforeend', `
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            cartWrapper.insertAdjacentHTML('beforeend', `
                 <div class="card" data-key="${element.id}">
                     ${element.sale ? '<div class="card-sale">🔥Hot Sale🔥</div>' : ''}
                     <div class="card-img-wrapper">
@@ -22,16 +24,14 @@ const scriptRenderGoogs = (data) => {
                     <div class="card-body justify-content-between">
                         <div class="card-price">${element.price} ₽</div>
                         <h5 class="card-title">${element.title}</h5>
-                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-primary">Удалить</button>
                     </div>
                 </div>
-            </div>
             `)
 
         });
 
     }
-
 }
 
-export default scriptRenderGoogs
+export default scriptRenderCart
